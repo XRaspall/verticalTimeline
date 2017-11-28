@@ -1,5 +1,5 @@
 /* ----------------------------------
-jQuery Timelinev 0.0.1
+jQuery Timelinev 1.0.0
 tested with jQuery v2.2.4
 
 Copyright 2017, Created by Xavier Raspall Gonzalez
@@ -29,16 +29,6 @@ jQuery.fn.timelinev = function(options){
         var dates       = parseFecha(datesCont);
         var dateActive  = dates.indexOf($(settings.timelineDiv+' '+settings.dateActiveClass+' '+settings.dateDiv+' '+settings.dateHtml).html());
 
-        //Parse dates
-        function parseFecha(fechasHTML) {
-            var arrayDates = [];
-            fechasHTML.each(function(){
-                var singleDate = $(this).html();
-                arrayDates.push(singleDate);
-            });
-            return arrayDates;
-        }
-
         //Show date active
         if (dateActive>1) {
             for (i = 0; i < dateActive-1; i++) {
@@ -56,7 +46,7 @@ jQuery.fn.timelinev = function(options){
                 divsCont.removeClass('active');
                 dateSelected.parent().parent().parent().addClass('active');
 
-                $(divsCont[(dateActive-1)]).animate({ 'margin-top': "-"+settings.divHeight  }, {queue:true, duration:'settings.datesSpeed'});
+                decrementDate();
                 dateActive=posDate;
             }
 
@@ -64,8 +54,7 @@ jQuery.fn.timelinev = function(options){
                 divsCont.removeClass('active');
                 dateSelected.parent().parent().parent().addClass('active');
 
-                $(divsCont[(dateActive-1)]).animate({ 'margin-top': 0 }, {queue:true, duration:'settings.datesSpeed'});
-                $(divsCont[(dateActive-2)]).animate({ 'margin-top': 0 }, {queue:true, duration:'settings.datesSpeed'});
+                incrementDate();
                 dateActive=posDate;
             }
         });
@@ -78,9 +67,7 @@ jQuery.fn.timelinev = function(options){
                 divsCont.removeClass('active');
                 $(divsCont[(dateActive-1)]).addClass('active');
 
-                $(divsCont[(dateActive-1)]).animate({ 'margin-top': 0 }, {queue:true, duration:'settings.datesSpeed'});
-                $(divsCont[(dateActive-2)]).animate({ 'margin-top': 0 }, {queue:true, duration:'settings.datesSpeed'});
-
+                incrementDate();
                 dateActive=dateActive-1;
             }
 
@@ -88,11 +75,31 @@ jQuery.fn.timelinev = function(options){
                 divsCont.removeClass('active');
                 $(divsCont[(dateActive+1)]).addClass('active');
 
-                $(divsCont[dateActive-1]).animate({ 'margin-top': "-"+settings.divHeight  }, {queue:true, duration:'settings.datesSpeed'});
+                decrementDate();
                 dateActive=dateActive+1;
             }
         });
 
+        //Parse dates
+        function parseFecha(fechasHTML) {
+            var arrayDates = [];
+            fechasHTML.each(function(){
+                var singleDate = $(this).html();
+                arrayDates.push(singleDate);
+            });
+            return arrayDates;
+        }
+
+        //Increment
+        function incrementDate(){
+            $(divsCont[(dateActive-1)]).animate({ 'margin-top': 0 }, {queue:true, duration:'settings.datesSpeed'});
+            $(divsCont[(dateActive-2)]).animate({ 'margin-top': 0 }, {queue:true, duration:'settings.datesSpeed'});
+        }
+
+        //Decrement
+        function decrementDate(){
+            $(divsCont[dateActive-1]).animate({ 'margin-top': "-"+settings.divHeight  }, {queue:true, duration:'settings.datesSpeed'});
+        }
 
     });
 };

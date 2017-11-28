@@ -10,9 +10,9 @@ Released under The MIT License.
 
 A simple jquery plugin to set up a vertical timeline.
 
-## JSFiddle:
+## PLNKR:
 
-https://jsfiddle.net/wreoy0t6/2/
+https://embed.plnkr.co/0w5ji04IbrYJUr9AO2vP/
 
 ## Usage:
 
