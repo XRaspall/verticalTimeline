@@ -1,5 +1,6 @@
 #timeline {
-    overflow: hidden
+    overflow: hidden;
+    width: 100%;
 }
 
 #timeline div {
@@ -29,7 +30,7 @@
     height: 20px;
     background: #0078FF;
     position: absolute;
-    left: 98.6%;
+    left: 98.7%;
     top: 98px;
     border-radius: 100%
 }
