@@ -2,7 +2,7 @@
 
 Vertical Timeline plugin for jQuery
 
-(c) 2017 Xavier Raspall Gonzalez (xavier.raspall@clicko.es)
+(c) 2019 Xavier Raspall Gonzalez (xavier.raspall@clicko.es)
 
 Released under The MIT License.
 

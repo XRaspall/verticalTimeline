@@ -2,7 +2,7 @@
 jQuery Timelinev 1.1.0
 tested with jQuery v2.2.4
 
-Copyright 2017, Created by Xavier Raspall Gonzalez
+Copyright 2019, Created by Xavier Raspall Gonzalez
 Free under the MIT license.
 http://www.opensource.org/licenses/mit-license.php
 ---------------------------------- */
@@ -10,26 +10,26 @@ http://www.opensource.org/licenses/mit-license.php
 jQuery.fn.timelinev = function(options){
     // plugin settings
     settings = jQuery.extend({
-        timelineDiv: 	 $(this),
-        containerDivs: 	 '.timelineCont',
-        dateDiv: 		 '.date',
-        textDiv: 		 '.text',
-        dateHtml: 		 'h2',
-        textHtml: 		 'p',
+        timelineDiv: $(this),
+        containerDivs: '.timelineCont',
+        dateDiv: '.date',
+        textDiv: '.text',
+        dateHtml: 'h2',
+        textHtml: 'p',
         dateActiveClass: '.active',
-        datesSpeed:      '750',
+        datesSpeed: '750',
     }, options);
         
     console.log();
 
     $(function() {
         // setting variables
-        var divsCont    = settings.timelineDiv.find(settings.containerDivs);
-        var datesCont   = divsCont.find(settings.dateDiv+' '+settings.dateHtml);
-        var dates       = parseFecha(datesCont);
-        var dateActive  = dates.indexOf($(settings.dateActiveClass+' '+settings.dateDiv+' '+settings.dateHtml).html());
+        var divsCont = settings.timelineDiv.find(settings.containerDivs);
+        var datesCont = divsCont.find(settings.dateDiv+' '+settings.dateHtml);
+        var dates = parseFecha(datesCont);
+        var dateActive = dates.indexOf($(settings.dateActiveClass+' '+settings.dateDiv+' '+settings.dateHtml).html());
 
-        var divHeight   = divsCont.outerHeight();
+        var divHeight = divsCont.outerHeight();
 
         //Show date active
         if (dateActive>1) {
